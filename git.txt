@@ -30,3 +30,9 @@ git commit -m "First commit"
 Логи
 git log показывает все commit
 git log --pretty=oneline
+
+Добавление ветки
+git branch dz
+git checkout dz - переход в ветку
+
+git checkout -b dz - создание и переход в новую ветку
