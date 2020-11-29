@@ -1,4 +1,17 @@
-1. Глобальные данные 1 раз в самом начале
+{
+    "terminal.integrated.shell.windows": "E:\\STUDENTS\\web02\\OSPanel\\modules\\git\\bin\\bash.exe",
+    "git.path": "E:\\STUDENTS\\web02\\OSPanel\\modules\\git\\bin\\git.exe",
+}
+
+
+
+
+
+
+
+
+
+Глобальные данные 1 раз в самом начале
 git config --global user.name "Vladimir Buzanov"
 git config --global user.email "vbuzanov@ukr.net"
 
@@ -12,3 +25,8 @@ git status
 git add index.php
 Добавить все
 git add .
+Фиксация изменений
+git commit -m "First commit"
+Логи
+git log показывает все commit
+git log --pretty=oneline
