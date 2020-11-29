@@ -1,0 +1,14 @@
+1. Глобальные данные 1 раз в самом начале
+git config --global user.name "Vladimir Buzanov"
+git config --global user.email "vbuzanov@ukr.net"
+
+Инициализация git
+git init
+
+Статус
+git status
+
+Добавление в git
+git add index.php
+Добавить все
+git add .
