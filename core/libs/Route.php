@@ -1,6 +1,7 @@
 <?php
 namespace Core\Libs;
 
+use Core\Libs\Exceptions\NotFoundException;
 use Core\Views\View;
 
 class Route{
@@ -40,8 +41,8 @@ class Route{
             }
        }
        else{
-            View::render('errors/404', [], 404);
-       }
+           throw new NotFoundException();
+        }
     }
     public static function getPage()
     {

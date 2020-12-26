@@ -1,6 +1,9 @@
 <?php
 
+use Core\Libs\Exceptions\DbException;
+use Core\Libs\Exceptions\NotFoundException;
 use Core\Libs\Route;
+use Core\Views\View;
 
 function correct($className){
     $classArr = explode('\\', $className);
@@ -14,5 +17,12 @@ function correct($className){
 
 spl_autoload_register('correct');
 
-Route::start();
-
+try{
+    Route::start();
+}
+catch(DbException $e){
+    echo $e->getMessage();
+}
+catch(NotFoundException $e){
+    View::render('errors/404', [], 404);
+}

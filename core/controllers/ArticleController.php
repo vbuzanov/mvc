@@ -1,6 +1,7 @@
 <?php
 namespace Core\Controllers;
 
+use Core\Libs\Exceptions\NotFoundException;
 use Core\Models\Article;
 use Core\Models\User;
 use Core\Views\View;
@@ -13,8 +14,7 @@ class ArticleController extends Controller{
     {
         $article = Article::getById($id);
         if(!$article){
-            View::render('errors/404', [], 404);
-            return;
+            throw new NotFoundException();
         }
         // $author = User::getById($article->user_id);
         View::render('articles/show', compact('article'));
@@ -23,8 +23,7 @@ class ArticleController extends Controller{
     {
         $article = Article::getById($id);
         if(!$article){
-            View::render('errors/404', [], 404);
-            return;
+            throw new NotFoundException();
         }
         $article->name = $_POST['name'];
         $article->text = $_POST['text'];
@@ -39,8 +38,7 @@ class ArticleController extends Controller{
     {
         $article = Article::getById($id);
         if(!$article){
-            View::render('errors/404', [], 404);
-            return;
+            throw new NotFoundException();
         }
         $users = User::findAll();
         View::render('articles/edit', compact('article', 'users'));
