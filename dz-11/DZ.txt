@@ -1,0 +1,34 @@
+https://youtu.be/GXlQcwwWjGw
+
+Задание 1. 
+Реализовать добавление записи.
+    1. Создать страницу с формой (web.php, ArticleController.php) action="article/add"
+    2. ArticleController.php
+      function add(){
+        // из POST
+
+        $article = new Article();
+        $article->name = $_POST['name']; 
+        $article->text = $_POST['text'];
+        $article->user_id = $_POST['user_id'];
+
+        $article->save();
+        $this->redirect('/');
+
+    }
+
+    3. Model.php  реализовать insert()
+
+
+2. Реализовать удаление записи.
+    <form    action="article/1/delete">
+
+    ArticleController.php
+     public function delete($id)
+    {
+        $article = Article::getById($id);
+        $article->delete();
+        $this->redirect('/');
+    }
+
+    Model.php  реализовать delete()

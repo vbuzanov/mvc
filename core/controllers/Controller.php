@@ -1,9 +1,18 @@
 <?php
 namespace Core\Controllers;
-class Controller{
 
-    public function __construct()
+
+class Controller{
+    
+
+    public function dump($obj)
     {
-        // echo __METHOD__;
+        echo '<pre>' . print_r($obj, true) . '</pre>';
+    }
+
+    public function redirect($path)
+    {
+        header('Location: ' . $path);
+        exit;
     }
 }

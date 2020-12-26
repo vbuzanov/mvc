@@ -1,6 +1,5 @@
 <?php
 
-
 use Core\Libs\Route;
 
 function correct($className){
@@ -15,7 +14,5 @@ function correct($className){
 
 spl_autoload_register('correct');
 
-
-
-
 Route::start();
+
