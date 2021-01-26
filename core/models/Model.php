@@ -18,6 +18,28 @@ abstract class Model{
        return $result ? $result[0] : null;
     }
 
+    public static function getCategId(string $name)
+    {
+       $pdo = DB::getInstance();
+       $result = $pdo->query('SELECT * FROM ' . static::getTableName() . ' WHERE name=:name', ['name'=>$name], static::class);
+       return $result ? $result[0]->id : null;
+    }
+
+    public static function findOneByColumn(string $columnName, $value): ?self
+    {
+        $pdo = DB::getInstance();
+        $result = $pdo->query(
+            'SELECT * FROM ' . static::getTableName() . ' WHERE ' . $columnName . ' = :value LIMIT 1;',
+            [':value' => $value],
+            static::class
+        );
+        if ($result === []) {
+            return null;
+        }
+        return $result[0];
+    }
+
+
     public function save()
     {
       $properties = $this->propertiesToDb();
@@ -43,13 +65,12 @@ abstract class Model{
       return $props;
     }
 
-    private function update(array $properties)
+    public static function update(array $properties)
     {
        $columns = [];
        foreach($properties as $column=>$value){
           $columns[] = $column . '=:' . $column;
        }
-      //  echo '<pre>' . print_r($columns, true) . '</pre>';
        
       $pdo = Db::getInstance();
       $sql = 'UPDATE '. static::getTableName() . ' SET ' . implode(', ', $columns) . ' WHERE id=:id';
@@ -66,7 +87,7 @@ abstract class Model{
  */
 
 
-    private function insert(array $properties)
+    public static function insert(array $properties)
     {
       $keys = [];
       $values = [];
@@ -79,7 +100,6 @@ abstract class Model{
      $pdo = Db::getInstance();
      $sql = 'INSERT INTO '. static::getTableName() . ' (' . implode(', ', $keys) . ')' . ' VALUES ' . "('" . implode("', '", $values) . "')";
      $pdo->query($sql, $properties, static::class);
-
     }
 
     public function delete()

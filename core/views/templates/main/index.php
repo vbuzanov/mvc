@@ -1,4 +1,8 @@
 <h1 class="bg-primary"><?= $title ?></h1>
+
+<a href="/pdf-articles" class="btn btn-primary">Save articles in PDF</a>
+<a href="/excel-articles" class="btn btn-primary">Save articles in Excel</a>
+
 <h2>Lorem, ipsum.</h2>
 
 <?php foreach($articles as $article): ?>
@@ -11,4 +15,6 @@
 
 <?php endforeach ?>    
 
-<a href="/article/add-form"> Добавить статью </a>
+<a href="/article/add-form" class="btn btn-primary"> Добавить статью </a><br><br>
+
+<a href="/import" class="btn btn-primary"><h3>Добавить или обновить товары</h3></a>

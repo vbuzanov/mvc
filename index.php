@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
 
 use Core\Libs\Exceptions\DbException;
 use Core\Libs\Exceptions\NotFoundException;
